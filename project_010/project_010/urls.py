@@ -8,5 +8,6 @@ urlpatterns = [
     path("",views.home),
     path('contact/', views.contact),
     path("first_app/", include("first_app.urls")),
+    path("second_app/", include("second_app.urls")),
 
 ]
