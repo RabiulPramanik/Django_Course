@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>This is home</h1>
+    <h1>Name: {{name}}</h1>
+    <h1>Roll: {{roll}}</h1>
+    <h1>Age: {{age}}</h1>
+    <h1>List: {{list}}</h1>
+
+    {{list}}
+    <h2>{{ list | join:"   " }}</h2>
+    <h2>{{ birthday | date:"D d M Y" }}</h2>
+
+    {% if age >= 20 %}
+        <h3>You will get licence </h3>
+    {% elif age < 20 %}
+        <h3>You will not get licence </h3>
+    {% else %}
+        <h3>You are child </h3>
+    {% endif %}
+
+    {% for i in course  %}
+    <h4>{{i.id}} {{i.name}} {{i.free}}</h4>
+    {% endfor %}
+    
+    
+</body>
+</html>
