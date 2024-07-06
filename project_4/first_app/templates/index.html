@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block table_contant %}
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">UserId</th>
+        <th scope="col">Title</th>
+        <th scope="col">Body</th>
+      </tr>
+    </thead>
+    <tbody>
+    {% for i in data %}
+      <tr>
+        <th scope="row">{{i.id}}</th>
+        <td>{{i.userId}}</td>
+        <td>{{i.title}}</td>
+        <td>{{i.body}}</td>
+      </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+{% endblock table_contant %}
+
+{% block image_contant %}
+    <h1>This is first app home!</h1>
+    <img src="{% static "image/bird_1.jpg" %}">
+    <img src="{% static "image/bird_2.jpg" %}">
+{% endblock image_contant %}
+
