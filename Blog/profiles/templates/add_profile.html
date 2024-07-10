@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% load crispy_forms_tags %}
+
+{% block contant_box %}
+    <h3 style="text-algin:center"> Profile </h3>
+    <form method = 'post' style="width:50%; margin:auto">
+        {% csrf_token %}
+        {{form|crispy}}
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+{% endblock contant_box %}

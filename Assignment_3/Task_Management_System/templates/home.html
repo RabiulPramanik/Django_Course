@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block contant %}
+<div class="row p-5">
+    {% if mdata %}
+        {% for i in mdata %}
+            <div class="col-sm-3 mb-3 mb-sm-0 p-3">
+                <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">ID: {{i.id}}</h5>
+                    <h6 class="card-title"><b>Date:</b> {{i.assing_date}}</h6>
+                    <p class="card-text"><b>Description: </b>{{i.decription}}</p>
+                    <p class="card-text">
+                        <b>Category:</b>
+                        {% for j in cdata %}
+                            {% for k in j.taskmodel.all %}
+                                {% if i.title == k.title %}
+                                <a class="btn btn-warning btn-sm" href="">{{j.name}}</a>
+                                {% endif %}
+                            {% endfor %}
+                        {% endfor %}
+                    </p>
+                    <p class="card-text text-center">
+                        {% if i.is_complete %}
+                            <a class="btn btn-success" href="{% url "complete" i.id %}">Completed</a>
+                        {% else %}
+                            <a class="btn btn-danger" href="{% url "delete" i.id %}">Delete</a>
+                            <a class="btn btn-primary" href="{% url "edit" i.id %}">Edit</a>
+                            <a class="btn btn-success" href="{% url "complete" i.id %}">Completed</a>
+                        {% endif %}
+                    </p>
+                </div>
+                </div>
+            </div>
+        {% endfor %}
+    {% else %}
+        <h3 class="text-center">Now, No Task Available! </h3>
+    {% endif %}
+  </div>
+{% endblock contant %}

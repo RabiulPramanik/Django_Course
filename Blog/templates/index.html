@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% load crispy_forms_tags %}
+
+{% block contant_box %}
+    <h3 style="text-algin:center"> Home </h3>
+    <div class="d-flex flex-wrap justify-content-center">
+        {% if data %}
+            {% for i in data %}
+            <div class="col-sm-3 p-3">
+                <div class="card">
+                  <div class="card-body">
+                    <h5 class="card-title">{{i.title}}</h5>
+                    <p class="card-text">{{i.contant}}</p>
+                    <p class="card-text">Author: {{i.author.name}}</p>
+                    <p>
+                    {% for cat in i.category.all %}
+                    <buttom class="btn btn-info btn-sm m-2">{{cat.name}}</buttom>
+                    {% endfor %}
+                    </p>
+
+                    <a href="#" class="btn btn-primary">Edit</a>
+                    <a href="#" class="btn btn-danger">Delete</a>
+                  </div>
+                </div>
+              </div>
+            {% endfor %}
+        {% else %}
+            <h4>Post not now available </h4>
+        {% endif %}
+      </div>
+    
+{% endblock contant_box %}
