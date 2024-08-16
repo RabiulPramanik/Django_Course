@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% block messages_box %}{% endblock messages_box %}
+{% block form_box %}
+    <h4>Welcome to profile <br> Hello {{user}} </h4>
+    <p><a href="{% url "passchangepage" %}"> Change Your Password with old password</a><p>
+    <p><a href="{% url "passchange2page" %}"> Change Your Password without old password!</a><p>
+    <p><a href="{% url "datachangepage" %}"> Change Your Data</a><p>
+{% endblock form_box %}

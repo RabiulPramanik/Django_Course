@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block contant_box %}
+<div class="m-5">
+    <div class="m-5">
+        <h1 class="text-center"><a href="{% url "changeData" %}" class="btn btn-warning">Edit Data</a></h1>
+        <h1 class="text-center"><a href="{% url "changePassword" %}" class="btn btn-danger">Edit Password</a></h1>
+    </div>
+</div>
+{% endblock contant_box %}

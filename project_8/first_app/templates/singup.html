@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% block style_box %}
+    <style>
+        .success{
+            color: red
+        }
+    </style>
+{% endblock style_box %}
+{% block messages_box %}
+    {% if messages %}
+        {% for m in messages %}
+            <p {% if m.tags %} class="{{m.tags}}" {% endif %}>{{m}}</p>
+        {% endfor %}
+    {% endif %}
+{% endblock messages_box %}
+{% block form_box %}
+    <form method = 'post' style = "width:50%; margin:auto"class="p-5" novalidate>
+        <h3> Sing Up </h3>
+        {% csrf_token %}
+        <!-- {{form|crispy}} -->
+        {% for fm in form%}
+            {{fm.label_tag}}
+            {{fm}}
+            {{fm.errors|striptags }}
+            <br>
+        {% endfor %}
+        <button type="submit" class="btn btn-primary">Submit</button>
+        <br>
+        <small>Already you have a account -><a href="{% url "loginpage" %}">Login</a></small>
+    </form>
+{% endblock form_box %}

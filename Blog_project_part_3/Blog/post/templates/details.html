@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% load crispy_forms_tags %}
+{% block contant_box %}
+<div class="col-11" style="width:50%; margin:auto">
+    <div class="card">
+      <div class="card-body">
+        <img src="{{post.image.url}}" class="card-img-top" alt="...">
+        <h5 class="card-title">{{post.title}}</h5>
+        <p class="card-text">{{post.contant}}</p>
+        <p class="card-text">Author: {{post.author.username}}</p>
+        <p>
+        {% for cat in post.category.all %}
+        <buttom class="btn btn-info btn-sm m-2">{{cat.name}}</buttom>
+        {% endfor %}
+        </p>
+        <hr>
+        <div class="card">
+          <h4>Total comment: {{comments | length}} </h4>
+          <hr>
+          {% for comment in comments %}
+          <div class="card-body border p-1">
+            <p><b>{{comment.name}}</b> {{comment.create_on}}</p>
+            <p>{{comment.body}}</p>
+          </div>
+          {% endfor %}
+        </div>
+        <hr>
+        <div class="card">
+          <div class="card-body">
+              <h3>Write Your Comment </h3>
+              <form method = 'post'>
+                  {% csrf_token %}
+                  {{comments_form|crispy}}
+                  <button type="submit" class="btn btn-primary">Submit</button>
+              </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {% endblock contant_box %}

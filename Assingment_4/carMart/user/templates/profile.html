@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block contant_box %}
+<div class="m-5">
+    <h1 class="text-warning text-center">Welcome <b>{{user}}<b></h1>
+    <h2><a href="{% url "profileEditPage" %}" class="btn btn-danger">Edit Profile</a></h2>
+</div>
+<div class="m-5">
+    <h2 class="btn btn-light fw-bold fs-5">Total Car in your card: {{car|length}}</h2>
+</div>
+<div class="row row-cols-1 row-cols-md-5 g-4 m-4">
+    {% if car %}
+    {% for c in car %}
+        <div class="col">
+            <div class="card">
+            <img src="{{c.image.url}}" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h4 class="card-title">{{c.name}}</h4>
+                <h5 class="card-title">{{c.brand.name}}</h5>
+                <p class="card-text">{{c.description|truncatewords:10}}</p>
+                <h6 class="card-title">Price: {{c.price}}K $</h6>
+                {% if request.user.is_authenticated %}
+                    <p class="card-text text-center">
+                        <a href="{% url "detailspage" c.id %}" class="btn btn-warning">View Details</a>
+                    </p>
+                {% endif %}
+            </div>
+            </div>
+        </div>
+    {% endfor %}
+    {% else %}
+        <h3> Not Available Car in your card </h3>
+    {% endif %}
+  </div>
+{% endblock contant_box %}

@@ -1,0 +1,6 @@
+media file and other for Django. the best link
+https://djangocentral.com/
+
+for class based views
+https://ccbv.co.uk/
+

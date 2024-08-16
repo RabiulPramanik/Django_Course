@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% load crispy_forms_tags %}
+
+{% block category_box %}
+  <li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+      Category
+    </a>
+    <ul class="dropdown-menu">
+      {% for cd in category %}
+
+      <li><a class="dropdown-item" href="{% url "category_wise_post" cd.slug %}">{{cd.name}}</a></li>
+      {% endfor %}
+      <li><a class="dropdown-item" href="{% url "homepage" %}">All</a></li>
+    </ul>
+  </li>
+{% endblock category_box %}
+
+{% block contant_box %}
+    <h3 style="width:10%; margin:auto"> HoMe </h3>
+    <h3 style="width:100%; margin:auto"> {{data | length}} Result Found </h3>
+    <div class="d-flex flex-wrap justify-content-center m-5">
+        {% if data %}
+            {% for i in data %}
+            <div class="col-sm-3 p-3">
+                <div class="card">
+                  <div class="card-body">
+                    <h5 class="card-title">{{i.title}}</h5>
+                    <p class="card-text">{{i.contant}}</p>
+                    <p class="card-text">Author: {{i.author.username}}</p>
+                    <p>
+                    {% for cat in i.category.all %}
+                    <buttom class="btn btn-info btn-sm m-2">{{cat.name}}</buttom>
+                    {% endfor %}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            {% endfor %}
+        {% else %}
+            <h4>Post not now available </h4>
+        {% endif %}
+      </div>
+    
+{% endblock contant_box %}
